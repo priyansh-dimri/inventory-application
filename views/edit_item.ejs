@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Item</title>
+  </head>
+  <body>
+    <h1>📦 Edit Item</h1>
+    <form action="/items/<%= item.id %>?_method=PUT" method="POST">
+      <input type="hidden" name="_method" value="PUT" />
+
+      <label for="name">Item Name:</label>
+      <input type="text" id="name" name="name" value="<%= item.name %>" required />
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" value="<%= item.quantity %>" required min="1" />
+
+      <label for="scientist_id">Scientist:</label>
+      <select id="scientist_id" name="scientist_id" required>
+        <% scientists.forEach(scientist => { %>
+          <option value="<%= scientist.id %>" <%= scientist.id === item.scientist_id ? 'selected="selected"' : "" %>>
+            <%= scientist.name %>
+          </option>
+        <% }); %>
+      </select>
+      
+
+      <button type="submit">Update Item</button>
+    </form>
+    <a href="/items">Back to Items</a>
+  </body>
+</html>

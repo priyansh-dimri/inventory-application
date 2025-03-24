@@ -6,7 +6,11 @@ router.get("/", scientistController.getAllScientists);
 
 router.get("/:id", scientistController.getScientistById);
 
+router.get("/new", scientistController.renderAddScientistForm);
+
 router.post("/", scientistController.createScientist);
+
+router.get("/:id/edit", scientistController.renderEditScientistForm);
 
 router.put("/:id", scientistController.updateScientist);
 
