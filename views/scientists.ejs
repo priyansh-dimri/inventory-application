@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scientists</title>
+  </head>
+  <body>
+    <h1>🧑‍🔬 Scientists</h1>
+    <ul>
+      <% scientists.forEach(scientist => { %>
+      <li>
+        <a href="/scientists/<%= scientist.id %>"><%= scientist.name %></a> -
+        <%= scientist.email %>
+        <form
+          action="/scientists/<%= scientist.id %>?_method=DELETE"
+          method="POST"
+          style="display: inline"
+        >
+          <button type="submit">❌ Delete</button>
+        </form>
+      </li>
+      <% }); %>
+    </ul>
+    <h2>Add New Scientist</h2>
+    <form action="/scientists" method="POST">
+      <input type="text" name="name" placeholder="Scientist Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <button type="submit">Add Scientist</button>
+    </form>
+  </body>
+</html>

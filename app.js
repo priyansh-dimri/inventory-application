@@ -22,6 +22,15 @@ app.get("/", (req, res) => {
   res.render("index", { title: "Mad Scientist Inventory" });
 });
 
+// Not Found Error Handler
+app.use((req, res, next) => {
+  res.status(404).render("error", { message: "404 - Page Not Found" });
+});
+
+app.use((err, req, res, next) => {
+  res.status(500).render("error", { message: "404 - Page Not Found" });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
