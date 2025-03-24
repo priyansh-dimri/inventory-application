@@ -1,0 +1,241 @@
+/* Meyer's Reset Starts */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Meyer's Reset Ends */
+
+@font-face {
+  font-family: "heading-font";
+  src: url(../fonts/Fontdiner/Fontdiner.ttf);
+}
+
+@font-face {
+  font-family: "subheading-font";
+  src: url(../fonts/Raleway/Raleway-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "primary-font";
+  src: url(../fonts/Lato/Lato-Regular.ttf);
+}
+
+:root {
+  /* Colors */
+  --bg-color: #3c4058;
+  --text-color: #cbcedd;
+  --accent-color: #9aa5b1;
+  --secondary-text: #909cac;
+
+  /* Fonts */
+  --heading-font: "heading-font", cursive;
+  --subheading-font: "subheading-font", sans-serif;
+  --primary-font: "primary-font", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--primary-font);
+  padding: 1rem;
+}
+
+h1 {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: var(--subheading-font);
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  font-family: var(--subheading-font);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondary-text);
+}
+
+p.secondary {
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+li {
+  list-style: none;
+  background-color: var(--accent-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0px 1px 1px rgba(3, 7, 18, 0.02), 0px 5px 4px rgba(3, 7, 18, 0.03),
+    0px 12px 9px rgba(3, 7, 18, 0.05), 0px 20px 15px rgba(3, 7, 18, 0.06),
+    0px 32px 24px rgba(3, 7, 18, 0.08);
+}
+
+a {
+  text-decoration: none;
+  color: rgb(129, 111, 183);
+}
+
+a:hover {
+  color: rgb(48, 29, 105);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.item-name {
+  grid-column: 1 / -1;
+}
