@@ -4,9 +4,9 @@ const scientistController = require("../controllers/scientistController");
 
 router.get("/", scientistController.getAllScientists);
 
-router.get("/:id", scientistController.getScientistById);
-
 router.get("/new", scientistController.renderAddScientistForm);
+
+router.get("/:id", scientistController.getScientistById);
 
 router.post("/", scientistController.createScientist);
 

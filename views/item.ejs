@@ -7,11 +7,18 @@
   </head>
   <body>
     <h1>📦 <%= item.name %></h1>
-    <p><strong>Category:</strong> <%= item.category %></p>
+    <p>
+      <strong>Category:</strong>
+      <% if (category) { %>
+      <a href="/categories/<%= category.id %>"><%= category.name %></a>
+      <% } else { %> Unknown <% } %>
+    </p>
     <p><strong>Quantity:</strong> <%= item.quantity %></p>
     <p>
-      <strong>Added by Scientist:</strong> <%= scientist ? scientist.name :
-      'Unknown' %>
+      <strong>Added by Scientist:</strong>
+      <% if (scientist) { %>
+      <a href="/scientists/<%= scientist.id %>"><%= scientist.name %></a>
+      <% } else { %> Unknown <% } %>
     </p>
     <a href="/items">Back to Items</a>
   </body>

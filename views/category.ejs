@@ -3,20 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= scientist.name %></title>
+    <title><%= category.name %></title>
   </head>
   <body>
-    <h1>🧑‍🔬 <%= scientist.name %></h1>
-    <p><strong>Email:</strong> <%= scientist.email %></p>
-    <h2>Items Discovered:</h2>
+    <h1>📁 <%= category.name %></h1>
+
+    <% if (items.length > 0) { %>
+    <h2>Items in this category:</h2>
     <ul>
       <% items.forEach(item => { %>
       <li>
         <a href="/items/<%= item.id %>"><%= item.name %></a> (Quantity: <%=
         item.quantity %>)
       </li>
-      <% }); %>
+      <% }) %>
     </ul>
-    <a href="/scientists">Back to Scientists</a>
+    <% } else { %>
+    <p>No items found in this category.</p>
+    <% } %>
+
+    <a href="/categories">Back to Categories</a>
   </body>
 </html>

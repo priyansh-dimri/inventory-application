@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const methodOverride = require("method-override");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,9 +17,11 @@ app.use(methodOverride("_method")); // For PUT and DELETE methods in forms
 // Routes
 const itemRoutes = require("./routes/items");
 const scientistRoutes = require("./routes/scientists");
+const categoriesRoutes = require("./routes/categories");
 
 app.use("/items", itemRoutes);
 app.use("/scientists", scientistRoutes);
+app.use("/categories", categoriesRoutes);
 
 app.get("/", (req, res) => {
   res.render("index", { title: "Mad Scientist Inventory" });

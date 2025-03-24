@@ -16,17 +16,13 @@
           action="/scientists/<%= scientist.id %>?_method=DELETE"
           method="POST"
           style="display: inline"
+          onsubmit="return confirm('Are you sure you want to delete this scientist?');"
         >
           <button type="submit">❌ Delete</button>
         </form>
       </li>
       <% }); %>
     </ul>
-    <h2>Add New Scientist</h2>
-    <form action="/scientists" method="POST">
-      <input type="text" name="name" placeholder="Scientist Name" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <button type="submit">Add Scientist</button>
-    </form>
+    <a href="/scientists/new">Add New Scientist</a>
   </body>
 </html>

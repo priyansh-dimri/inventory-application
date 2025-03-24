@@ -14,17 +14,36 @@ exports.getAllItems = async (req, res) => {
 exports.getItemById = async (req, res) => {
   try {
     const { id } = req.params;
-    const { data: item, error } = await supabase
+    const { data: item, error: itemError } = await supabase
       .from("items")
       .select("*")
       .eq("id", id)
       .single();
 
-    if (error || !item) {
+    if (itemError || !item) {
       return res.render("error", { error: "Item not found" });
     }
+    const { data: scientist, error: scientistError } = await supabase
+      .from("scientists")
+      .select("*")
+      .eq("id", item.scientist_id)
+      .single();
 
-    res.render("item", { item });
+    if (scientistError || !scientist) {
+      return res.render("error", { error: "Scientist not found" });
+    }
+
+    const { data: category, error: categoryError } = await supabase
+      .from("categories")
+      .select("*")
+      .eq("id", item.category_id)
+      .single();
+
+    if(categoryError || !category) {
+      return res.render("error", { error: "Category not found" });
+    }
+
+    res.render("item", { item, scientist, category });
   } catch (err) {
     res.render("error", { error: "Item not found" });
   }
@@ -35,7 +54,7 @@ exports.renderAddItemForm = async (req, res) => {
     const { data: scientists, error } = await supabase
       .from("scientists")
       .select("id, name");
-    if (error) throw error;
+    if (error) res.render("error", { error: err.message });
     res.render("new_item", { scientists });
   } catch (err) {
     res.render("error", { error: err.message });
@@ -49,12 +68,14 @@ exports.createItem = async (req, res) => {
     if (!name || !quantity || !scientist_id) {
       return res.render("error", { error: "All fields are required" });
     }
+    console.log({ name, quantity, scientist_id });
 
     const { error } = await supabase
       .from("items")
       .insert([{ name, quantity, scientist_id }]);
 
-    if (error) throw error;
+    if (error) res.render("error", { error: err.message });
+    console;
     res.redirect("/items");
   } catch (err) {
     res.render("error", { error: err.message });

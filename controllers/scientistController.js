@@ -2,10 +2,12 @@ const supabase = require("../config/db");
 
 exports.getAllScientists = async (req, res) => {
   try {
-    const { data, error } = await supabase.from("scientists").select("*");
+    const { data: scientists, error } = await supabase
+      .from("scientists")
+      .select("*");
     if (error) throw error;
     res.render("scientists", { scientists });
-  } catch (error) {
+  } catch (err) {
     res.render("error", { error: err.message });
   }
 };
@@ -32,10 +34,12 @@ exports.getScientistById = async (req, res) => {
       .select("id, name, quantity")
       .eq("scientist_id", id);
 
-    if (itemsError) throw itemsError;
+    if (itemsError) {
+      return res.render("error", { error: "Item not found" });
+    }
 
-    res.render("scientist", { scientist });
-  } catch (error) {
+    res.render("scientist", { scientist, items });
+  } catch (err) {
     res.render("error", { error: err.message });
   }
 };
@@ -95,11 +99,40 @@ exports.updateScientist = async (req, res) => {
 exports.deleteScientist = async (req, res) => {
   try {
     const { id } = req.params;
+
+    // Check if any items are associated with this scientist
+    const { data: items, error: itemsError } = await supabase
+      .from("items")
+      .select("id")
+      .eq("scientist_id", id);
+
+    if (itemsError) {
+      return res
+        .status(500)
+        .render("error", { message: "Error checking scientist dependencies" });
+    }
+
+    if (items.length > 0) {
+      return res
+        .status(400)
+        .render("error", {
+          message: "Cannot delete scientist as they have associated items",
+        });
+    }
+
+    // Proceed with deletion if no items are linked
     const { error } = await supabase.from("scientists").delete().eq("id", id);
 
-    if (error) throw error;
+    if (error) {
+      return res
+        .status(500)
+        .render("error", { message: "Error deleting scientist" });
+    }
+
     res.redirect("/scientists");
   } catch (err) {
-    res.render("error", { error: err.message });
+    res
+      .status(500)
+      .render("error", { message: "An unexpected error occurred" });
   }
 };
