@@ -191,6 +191,8 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  grid-column: 1 / -1;
+  font-weight: bold;
 }
 
 button:hover {
@@ -206,6 +208,7 @@ ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
+  margin: 1rem 0;
 }
 
 li {
@@ -238,4 +241,29 @@ a:hover {
 
 .item-name {
   grid-column: 1 / -1;
+}
+
+.item-name,
+.item-data {
+  font-family: var(--primary-font);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.full-form {
+  width: 60vw;
+  margin: 1rem auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 3fr;
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+label {
+  justify-self: end;
 }

@@ -10,9 +10,9 @@
     <h1>🧑‍🔬 Scientists</h1>
     <ul>
       <% scientists.forEach(scientist => { %>
-      <li>
-        <a href="/scientists/<%= scientist.id %>"><%= scientist.name %></a> -
-        <%= scientist.email %>
+      <li class="item">
+        <a href="/scientists/<%= scientist.id %>" class="item-name"><%= scientist.name %></a>
+        <p class="item-data"><%= scientist.email %></p>
         <form
           action="/scientists/<%= scientist.id %>?_method=DELETE"
           method="POST"

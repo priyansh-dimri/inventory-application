@@ -39,7 +39,7 @@ exports.getItemById = async (req, res) => {
       .eq("id", item.category_id)
       .single();
 
-    if(categoryError || !category) {
+    if (categoryError || !category) {
       return res.render("error", { error: "Category not found" });
     }
 
@@ -51,11 +51,17 @@ exports.getItemById = async (req, res) => {
 
 exports.renderAddItemForm = async (req, res) => {
   try {
-    const { data: scientists, error } = await supabase
+    const { data: scientists, error: scientistError } = await supabase
       .from("scientists")
       .select("id, name");
-    if (error) res.render("error", { error: err.message });
-    res.render("new_item", { scientists });
+    if (scientistError) res.render("error", { error: scientistError.message });
+
+    const { data: categories, error: categoryError } = await supabase
+      .from("categories")
+      .select("*");
+
+    if (categoryError) res.render("error", { error: categoryError.message });
+    res.render("new_item", { scientists, categories });
   } catch (err) {
     res.render("error", { error: err.message });
   }
@@ -63,19 +69,18 @@ exports.renderAddItemForm = async (req, res) => {
 
 exports.createItem = async (req, res) => {
   try {
-    const { name, quantity, scientist_id } = req.body;
+    const { name, quantity, scientist_id, category_id } = req.body;
 
-    if (!name || !quantity || !scientist_id) {
+    if (!name || !quantity || !scientist_id || !category_id) {
       return res.render("error", { error: "All fields are required" });
     }
-    console.log({ name, quantity, scientist_id });
 
     const { error } = await supabase
       .from("items")
-      .insert([{ name, quantity, scientist_id }]);
+      .insert([{ name, quantity, scientist_id, category_id }]);
 
-    if (error) res.render("error", { error: err.message });
-    console;
+    if (error) return res.render("error", { error: error.message });
+
     res.redirect("/items");
   } catch (err) {
     res.render("error", { error: err.message });

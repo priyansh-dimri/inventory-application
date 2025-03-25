@@ -10,7 +10,7 @@
     <h1>📂 Categories</h1>
     <ul>
       <% categories.forEach(category => { %>
-      <li>
+      <li class="item">
         <a href="/categories/<%= category.id %>"><%= category.name %></a>
         <form
           action="/categories/<%= category.id %>?_method=DELETE"

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= scientist.name %></title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <h1>🧑‍🔬 <%= scientist.name %></h1>
@@ -12,12 +12,13 @@
     <h2>Items Discovered:</h2>
     <ul>
       <% items.forEach(item => { %>
-      <li>
-        <a href="/items/<%= item.id %>"><%= item.name %></a> (Quantity: <%=
-        item.quantity %>)
+      <li class="item">
+        <a href="/items/<%= item.id %>" class="item-name"><%= item.name %></a>
+        <p class="item-name">(Quantity: <%= item.quantity %>)</p>
       </li>
       <% }); %>
     </ul>
-    <a href="/scientists">Back to Scientists</a>
+    <p><a href="/scientists/<%= scientist.id %>/edit">Edit Scientist</a></p>
+    <p><a href="/scientists">Back to Scientists</a></p>
   </body>
 </html>

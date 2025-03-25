@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= item.name %></title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <h1>📦 <%= item.name %></h1>
@@ -21,6 +21,7 @@
       <a href="/scientists/<%= scientist.id %>"><%= scientist.name %></a>
       <% } else { %> Unknown <% } %>
     </p>
-    <a href="/items">Back to Items</a>
+    <p><a href="/items/<%= item.id %>/edit">Edit Item</a></p>
+    <p><a href="/items">Back to Items</a></p>
   </body>
 </html>

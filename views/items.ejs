@@ -12,7 +12,7 @@
       <% items.forEach(item => { %>
       <li class="item">
         <a class="item-name" href="/items/<%= item.id %>"><%= item.name %></a>
-        <strong class="item-quantity">Quantity: <%= item.quantity %></strong>
+        <strong class="item-data">Quantity: <%= item.quantity %></strong>
         <form
           action="/items/<%= item.id %>?_method=DELETE"
           method="POST"
