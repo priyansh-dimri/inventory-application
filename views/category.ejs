@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <h1>📁 <%= category.name %></h1>
+    <nav>
+      <a href="/" class="nav-left"
+        ><img src="/images/lab.svg" alt="Home" class="large-icon"
+      /></a>
+      <h1><%= category.name %></h1>
+      <a href="/categories/<%= category.id %>/edit" class="nav-right"
+        ><img
+          src="/images/edit.svg"
+          alt="Edit Category"
+          class="large-icon nav-right"
+      /></a>
+    </nav>
 
     <% if (items.length > 0) { %>
     <h2>Items in this category:</h2>

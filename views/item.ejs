@@ -7,21 +7,32 @@
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <h1>📦 <%= item.name %></h1>
-    <p>
-      <strong>Category:</strong>
-      <% if (category) { %>
-      <a href="/categories/<%= category.id %>"><%= category.name %></a>
-      <% } else { %> Unknown <% } %>
-    </p>
-    <p><strong>Quantity:</strong> <%= item.quantity %></p>
-    <p>
-      <strong>Added by Scientist:</strong>
-      <% if (scientist) { %>
-      <a href="/scientists/<%= scientist.id %>"><%= scientist.name %></a>
-      <% } else { %> Unknown <% } %>
-    </p>
-    <p><a href="/items/<%= item.id %>/edit">Edit Item</a></p>
-    <p><a href="/items">Back to Items</a></p>
+    <nav>
+      <a href="/" class="nav-left"
+        ><img src="/images/lab.svg" alt="Home" class="large-icon"
+      /></a>
+      <h1><%= item.name %></h1>
+      <a href="/items/<%= item.id %>/edit" class="nav-right"
+        ><img
+          src="/images/edit.svg"
+          alt="Edit Item"
+          class="large-icon nav-right"
+      /></a>
+    </nav>
+    <div class="item-container">
+      <p>
+        <strong>Category:</strong>
+        <% if (category) { %>
+        <a href="/categories/<%= category.id %>"><%= category.name %></a>
+        <% } else { %> Unknown <% } %>
+      </p>
+      <p><strong>Quantity:</strong> <%= item.quantity %></p>
+      <p>
+        <strong>Added by Scientist:</strong>
+        <% if (scientist) { %>
+        <a href="/scientists/<%= scientist.id %>"><%= scientist.name %></a>
+        <% } else { %> Unknown <% } %>
+      </p>
+    </div>
   </body>
 </html>

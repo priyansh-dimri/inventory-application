@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Error</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <h1>😵 Oops! Something went wrong.</h1>
-    <p><%= message %></p>
-    <a href="/">🔙 Go Home</a>
+    <nav>
+      <a href="/" class="nav-left"
+        ><img src="/images/lab.svg" alt="Home" class="large-icon"
+      /></a>
+      <h1>Oops! Something went wrong.</h1>
+    </nav>
+    <div class="error-container">
+      <p><%= message %></p>
+      <hr />
+      <h2><a href="/">Go Home</a></h2>
+    </div>
   </body>
 </html>

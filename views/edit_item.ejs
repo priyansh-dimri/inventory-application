@@ -7,7 +7,24 @@
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-    <h1>📦 Edit Item</h1>
+    <nav>
+      <a href="/" class="nav-left"
+        ><img src="/images/lab.svg" alt="Home" class="large-icon"
+      /></a>
+      <h1>
+        <img
+          src="/images/category.svg"
+          alt="Categories"
+          class="large-icon"
+        />Edit Item
+      </h1>
+      <a href="/items/new" class="nav-right"
+        ><img
+          src="/images/add.svg"
+          alt="Edit Category"
+          class="large-icon nav-right"
+      /></a>
+    </nav>
     <form action="/items/<%= item.id %>?_method=PUT" method="POST" class="full-form">
       <input type="hidden" name="_method" value="PUT" />
 

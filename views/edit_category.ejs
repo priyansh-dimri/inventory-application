@@ -4,11 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Category</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <h1>✏️ Edit Category</h1>
-    <form action="/categories/<%= category.id %>?_method=PUT" method="POST" class="full-form">
+    <nav>
+      <a href="/" class="nav-left"
+        ><img src="/images/lab.svg" alt="Home" class="large-icon"
+      /></a>
+      <h1>
+        <img
+          src="/images/category.svg"
+          alt="Categories"
+          class="large-icon"
+        />Edit Category
+      </h1>
+      <a href="/categories/new" class="nav-right"
+        ><img
+          src="/images/add.svg"
+          alt="New Category"
+          class="large-icon nav-right"
+      /></a>
+    </nav>
+    <form
+      action="/categories/<%= category.id %>?_method=PUT"
+      method="POST"
+      class="full-form"
+    >
       <label for="name">Category Name:</label>
       <input
         type="text"

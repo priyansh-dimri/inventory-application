@@ -4,11 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Scientist</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <h1>🧑‍🔬 Edit Scientist</h1>
-    <form action="/scientists/<%= scientist.id %>?_method=PUT" method="POST" class="full-form">
+    <nav>
+      <a href="/" class="nav-left"
+        ><img src="/images/lab.svg" alt="Home" class="large-icon"
+      /></a>
+      <h1>
+        <img
+          src="/images/category.svg"
+          alt="Categories"
+          class="large-icon"
+        />Edit Scientist
+      </h1>
+      <a href="/scientists/new" class="nav-right"
+        ><img
+          src="/images/add.svg"
+          alt="Add Scientist"
+          class="large-icon nav-right"
+      /></a>
+    </nav>
+    <form
+      action="/scientists/<%= scientist.id %>?_method=PUT"
+      method="POST"
+      class="full-form"
+    >
       <input type="hidden" name="_method" value="PUT" />
 
       <label for="name">Name:</label>

@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Category</title>
-  <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-  <h1>➕ Add New Category</h1>
-  <form action="/categories" method="POST" class="full-form">
-    <label for="name">Category Name:</label>
-    <input type="text" id="name" name="name" required>
-    <button type="submit">Add Category</button>
-  </form>
-  <a href="/categories">Back to Categories</a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Category</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="nav-left"
+        ><img src="/images/lab.svg" alt="Home" class="large-icon"
+      /></a>
+      <h1>Add New Category</h1>
+    </nav>
+    <h1></h1>
+    <form action="/categories" method="POST" class="full-form">
+      <label for="name">Category Name:</label>
+      <input type="text" id="name" name="name" required />
+      <button type="submit">Add Category</button>
+    </form>
+    <a href="/categories">Back to Categories</a>
+  </body>
 </html>
